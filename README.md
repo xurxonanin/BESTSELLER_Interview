@@ -19,3 +19,5 @@ The second one is a POST call to "/predict" that sends 6 parameters in a JSON st
 5. "latitude": Must be a floating point value between 22 and 26.
 6. "longitude": Must be a floating point value between 120 and 123.
 
+## Tests
+A series of 8 tests were created to check that the model is correctly loaded, that it returns the expected outputs, that the endpoints are available and how the POST call behaves depending on the format of the data sent.

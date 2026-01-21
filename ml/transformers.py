@@ -13,9 +13,8 @@ class TransactionDateTransformer(BaseEstimator, TransformerMixin):
         dates = X.iloc[:, 0].astype(float)
         years = np.floor(dates).astype(int)
         months = np.rint((dates - years) * 12).astype(int).clip(1,12)
-        days = np.full_like(years, fill_value=int(self.day))
 
-        return np.column_stack([years, months, days])
+        return np.column_stack([years, months])
     
     def get_feature_names_out(self, input_features=None):
-        return np.array(['X1 Transaction Year', 'X1 Transaction Month', 'X1 Transaction Day'], dtype=object)
+        return np.array(['X1 Transaction Year', 'X1 Transaction Month'], dtype=object)
