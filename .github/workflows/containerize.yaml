@@ -1,0 +1,29 @@
+name: Containerize
+
+on:
+    push:
+        branches: ["containerize_app"]
+
+permissions:
+    contents: read
+    packages: write
+
+
+jobs:
+    build-and-push:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Get Latest Checkout
+              uses: actions/checkout@v6.0.1
+            
+            - name: Log in to GHCR
+              run: |
+                echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+            - name: Build
+              run: |
+                docker build -t ghcr.io/${{ github.repository }}:latest
+
+            - name: Push
+              run: |
+                docker push ghcr.io/${{ github.repository }}:latest

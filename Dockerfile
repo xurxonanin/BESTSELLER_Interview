@@ -10,8 +10,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app ./app
 COPY ml ./ml
-COPY models ./models
+COPY data ./data
+
+RUN python ./ml/prediction_model.py
 
 EXPOSE 8000
+
 
 CMD ["uvicorn", "app.endpoints:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
