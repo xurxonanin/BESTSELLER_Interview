@@ -4,6 +4,10 @@ from pathlib import Path
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 from ml.transformers import TransactionDateTransformer
 from sklearn.linear_model import ElasticNet
 from sklearn.model_selection import train_test_split
