@@ -9,7 +9,6 @@ import pandas as pd
 logger = logging.getLogger("uvicorn.error")
 MODEL_PATH = Path("models/price_prediction_elasticnet.joblib")
 COLS = ["X1 transaction date", "X2 house age", "X3 distance to the nearest MRT station", "X4 number of convenience stores", "X5 latitude", "X6 longitude"]
-models = {}
 class PredictRequest(BaseModel):
     transaction_date: float = Field(ge=1900, le=2100)
     house_age: float = Field(ge=0.0, le=300)

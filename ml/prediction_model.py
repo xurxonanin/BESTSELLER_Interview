@@ -7,7 +7,6 @@ from sklearn.preprocessing import StandardScaler
 from ml.transformers import TransactionDateTransformer
 from sklearn.linear_model import ElasticNet
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_absolute_error
 import joblib
 
 
