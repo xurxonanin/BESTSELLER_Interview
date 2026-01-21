@@ -12,8 +12,8 @@ COLS = ["X1 transaction date", "X2 house age", "X3 distance to the nearest MRT s
 class PredictRequest(BaseModel):
     transaction_date: float = Field(ge=1900, le=2100)
     house_age: float = Field(ge=0.0, le=300)
-    distance_to_MRT: float = Field(ge=0.0)
-    number_of_CS: int = Field(ge=0)
+    distance_to_MRT: float = Field(ge=0.0, le=50000)
+    number_of_CS: int = Field(ge=0, le=150)
     latitude: float = Field(ge=22, le=26)
     longitude: float = Field(ge=120, le=123)
 
