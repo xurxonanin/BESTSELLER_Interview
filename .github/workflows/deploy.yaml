@@ -25,7 +25,7 @@ jobs:
 
             - name: Train Model
               run: |
-                python ml.prediction_model.py
+                python ml/prediction_model.py
             - name: Run Tests
               run: |
                 pytest -q
