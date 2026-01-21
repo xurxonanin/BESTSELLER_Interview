@@ -20,4 +20,11 @@ The second one is a POST call to "/predict" that sends 6 parameters in a JSON st
 6. "longitude": Must be a floating point value between 120 and 123.
 
 ## Tests
-A series of 8 tests were created to check that the model is correctly loaded, that it returns the expected outputs, that the endpoints are available and how the POST call behaves depending on the format of the data sent.
+A series of 7 tests were created to check that the model is correctly loaded, that it returns the expected outputs, that the endpoints are available and how the POST call behaves depending on the format of the data sent.
+
+First for the ML model it is checked that the created model can be loaded from the stored version in disk. Then another test is carried out to check its outputs with some example parameters are correct.
+
+For the API calls first, it is checked that the health endpoint returns the expected output. Then for the predict endpoint other experiments are carried out where first, all the values match the expected input and returns a 200, and other where the format is incorrect with negative values, empty values, different types and out of bounds values. 
+
+## CI/CD
+In this case it was created a simple workflow that sets up the required version for python, gets the current checkout, installs the required dependencies and then launches the tests checking whether they passed or not.

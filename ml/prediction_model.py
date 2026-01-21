@@ -32,7 +32,7 @@ Y = raw_data[Y_cols]
 X_train, X_test, Y_train, Y_test = train_test_split(
     X,
     Y,
-    test_size=0.25,
+    test_size=0.2,
     random_state=250
 )
 preprocess = ColumnTransformer(
