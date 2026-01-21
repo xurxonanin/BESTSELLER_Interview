@@ -6,9 +6,12 @@ import logging
 import joblib
 import pandas as pd
 
+# Indicate logger and location of the model to be launched, and columns used on features.
 logger = logging.getLogger("uvicorn.error")
 MODEL_PATH = Path("models/price_prediction_elasticnet.joblib")
 COLS = ["X1 transaction date", "X2 house age", "X3 distance to the nearest MRT station", "X4 number of convenience stores", "X5 latitude", "X6 longitude"]
+
+# Class to add validation to the current scheme
 class PredictRequest(BaseModel):
     transaction_date: float = Field(ge=1900, le=2100)
     house_age: float = Field(ge=0.0, le=300)
@@ -28,13 +31,17 @@ async def lifespan(app: FastAPI):
     logger.info("Model loaded.")
     yield
 
+# Create a FastAPI app with the model already loaded
 app = FastAPI(lifespan=lifespan)
 
+# GET endpoint for Health
 @app.get("/health")
 async def health():
     logger.info("Health request received.")
     return{"status": "OK"}
 
+
+# Post endpoint for Predict
 @app.post("/predict")
 async def get_prediction(input: PredictRequest):
     logger.info("Price prediction called.")

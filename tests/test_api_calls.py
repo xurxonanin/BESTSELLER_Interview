@@ -10,7 +10,7 @@ from app.endpoints import app
 
 def test_health_endpoint():
     """
-    Correct input, expected to work
+    API Test 1: Correct input, expected to work
     """
     with TestClient(app) as client:
         response = client.get("/health")
@@ -19,7 +19,7 @@ def test_health_endpoint():
 
 def test_prediction_correct_input():
     """
-    Correct payload, expects 200 and returning a price greater than 0
+    API Test 2: Correct payload, expects 200 and returning a price greater than 0
     """
     correct_payload = {
         "transaction_date":2013.8,
@@ -39,7 +39,7 @@ def test_prediction_correct_input():
 
 def test_prediction_negative_input():
     """
-    Includes negative distance and latitude out of the bounds.
+    API Test 3: Includes negative distance and latitude out of the bounds.
     Is expected to fail.
     """
     negative_payload = {
@@ -56,7 +56,7 @@ def test_prediction_negative_input():
 
 def test_prediction_empty_fields_input():
     """
-    Includes None transaction date and distance to MRT.
+    API Test 4: Includes None transaction date and distance to MRT.
     Is expected to fail.
     """
     empty_payload = {
@@ -73,7 +73,7 @@ def test_prediction_empty_fields_input():
 
 def test_prediction_incorrect_type_input():
     """
-    Includes incorrect types for transaction date, number of Convenience Stores and longitude.
+    API Test 5: Includes incorrect types for transaction date, number of Convenience Stores and longitude.
     Is expected to fail.
     """
     negative_payload = {

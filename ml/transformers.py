@@ -3,6 +3,9 @@ import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 
 class TransactionDateTransformer(BaseEstimator, TransformerMixin):
+    """
+    Transformer that returns Month and Year from each date.
+    """
     def __init__(self, day: int = 1):
         self.day = day
     
